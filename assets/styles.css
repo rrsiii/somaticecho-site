@@ -1,0 +1,253 @@
+/* SomaticEcho — site styles
+   Palette pulled from the app: bg #020617, orb purple #863bff/#7e14ff,
+   highlight #ede6ff, accent cyan #47bfff. Restraint over polish. */
+
+:root {
+  --bg: #020617;
+  --surface: #0a1024;
+  --border: #1b2444;
+  --text: #d9d5ec;
+  --heading: #f4f1ff;
+  --muted: #8a87a6;
+  --purple: #863bff;
+  --purple-soft: #b79bff;
+  --cyan: #47bfff;
+  --maxw: 44rem;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  letter-spacing: 0.1px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* a quiet glow, top-center — structure sensed, not shown */
+body::before {
+  content: "";
+  position: fixed;
+  top: -28vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70vw;
+  max-width: 900px;
+  height: 60vh;
+  background: radial-gradient(ellipse at center,
+    rgba(134, 59, 255, 0.18) 0%,
+    rgba(134, 59, 255, 0.06) 38%,
+    transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+main, header, footer { position: relative; z-index: 1; }
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---- header / nav ---- */
+header {
+  padding: 1.6rem 0;
+}
+.nav {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--heading);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.brand img { width: 22px; height: 22px; display: block; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 1.4rem;
+  font-size: 0.95rem;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* ---- hero ---- */
+.hero {
+  text-align: center;
+  padding: 3.5rem 0 2.5rem;
+}
+.hero .mark {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.75rem;
+  filter: drop-shadow(0 0 26px rgba(45, 212, 191, 0.35));
+}
+.hero h1 {
+  color: var(--heading);
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin: 0 0 0.75rem;
+}
+.hero .lede {
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  color: var(--purple-soft);
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+/* ---- content ---- */
+main { padding-bottom: 4rem; }
+
+h2 {
+  color: var(--heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  margin: 2.75rem 0 0.6rem;
+}
+h3 {
+  color: var(--heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.8rem 0 0.4rem;
+}
+p { margin: 0 0 1.1rem; }
+
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.muted { color: var(--muted); }
+.small { font-size: 0.92rem; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* a restrained set of statements, not feature cards */
+.statements { margin: 2.5rem 0; }
+.statement {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+.statement:last-child { border-bottom: 1px solid var(--border); }
+.statement h2 { margin-top: 0; }
+.statement p:last-child { margin-bottom: 0; }
+
+ul { padding-left: 1.2rem; }
+li { margin: 0.35rem 0; }
+
+.note {
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* ---- footer ---- */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0 3rem;
+}
+.foot {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.foot a { color: var(--muted); margin-left: 1.2rem; }
+.foot a:first-child { margin-left: 0; }
+.foot a:hover { color: var(--text); }
+.foot .copy { order: 2; }
+.foot .links { order: 1; }
+
+@media (max-width: 480px) {
+  body { font-size: 17px; }
+  .nav-links a { margin-left: 1rem; }
+}
+
+/* ── landing sections — a narrative, not a uniform stack ── */
+.section { padding: 3.5rem 0; }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.72rem;
+  color: var(--purple-soft);
+  margin: 0 0 1rem;
+}
+
+/* the reframe — a single big, confident moment */
+.insight { text-align: center; padding: 5rem 0; }
+.insight h2 {
+  font-size: clamp(1.9rem, 5.5vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+  margin: 0 0 1.25rem;
+  color: var(--heading);
+}
+.insight p { max-width: 34rem; margin: 0 auto; color: var(--text); }
+
+/* how it works — three steps */
+.steps { display: grid; gap: 2rem; margin-top: 2.25rem; }
+@media (min-width: 720px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+.step .num { font-size: 0.8rem; color: var(--purple-soft); letter-spacing: 1.5px; margin: 0 0 0.5rem; }
+.step h3 { margin: 0 0 0.4rem; font-size: 1.15rem; color: var(--heading); }
+.step p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+/* the dream — evocative climax */
+.dream { text-align: center; padding: 5rem 0; }
+.dream h2 {
+  font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+  line-height: 1.2;
+  margin: 0 auto 1.25rem;
+  max-width: 30rem;
+  color: var(--heading);
+}
+.dream p { max-width: 34rem; margin: 0 auto; color: var(--text); }
+
+/* proof / trust prose */
+.prose h2 { margin-top: 0; color: var(--heading); }
+.prose p { color: var(--text); }
+.prose p:last-child { margin-bottom: 0; }
+
+/* CTA */
+.hero .cta-btn { margin-top: 1.75rem; }
+.cta { text-align: center; padding: 5rem 0 2rem; }
+.cta h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 1.5rem; color: var(--heading); }
+.cta-btn {
+  display: inline-block;
+  border: 1px solid rgba(45, 212, 191, 0.5);
+  color: var(--heading);
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cta-btn:hover { background: rgba(45, 212, 191, 0.08); border-color: rgba(45, 212, 191, 0.85); text-decoration: none; }
+.cta .sub { color: var(--muted); font-size: 0.9rem; margin-top: 1.1rem; }
